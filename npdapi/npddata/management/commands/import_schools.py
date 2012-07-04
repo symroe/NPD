@@ -10,7 +10,7 @@ SEEN = set()
 
 class Command(BaseCommand):
     def handle(self, path, **options):
-        for file in glob.glob("%s/*" % path):
+        for file in glob.glob("%s/*.txt" % path):
             in_file = csv.DictReader(open(file), dialect='excel-tab')
             for line in in_file:
                 if line:
