@@ -4,23 +4,18 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 admin.autodiscover()
 
-from django.conf.urls.defaults import *
-from api.api import EntryResource
+from tastypie.api import Api
 
-entry_resource = EntryResource()
+from api.api import EntryResource, SchoolResource
 
+
+v1_api = Api(api_name='v1')
+v1_api.register(EntryResource())
+v1_api.register(SchoolResource())
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^npdapi/', include('npdapi.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
-    
-    (r'api/', include(entry_resource.urls)),
-    
+    (r'api/', include(v1_api.urls)),
 )
 

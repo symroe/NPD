@@ -1,7 +1,8 @@
 from tastypie.resources import ModelResource
 from tastypie.authentication import ApiKeyAuthentication
+from tastypie.constants import ALL, ALL_WITH_RELATIONS
 
-from npddata.models import Dummy
+from npddata.models import Dummy, School
 
 
 class EntryResource(ModelResource):
@@ -23,3 +24,14 @@ class EntryResource(ModelResource):
            # if bundle.request.user.whatever == something:
            #     bundle.data['private'] = bundle.obj.private
            return bundle
+
+
+class SchoolResource(ModelResource):
+    class Meta:
+        queryset = School.objects.all()
+        resource_name = 'school'
+        authentication = ApiKeyAuthentication()
+        filtering = {
+                    "county": ALL,
+                }
+    
