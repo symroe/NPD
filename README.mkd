@@ -1,0 +1,37 @@
+# NPD API #
+
+This API is for use on the [] hack day.
+
+## Original data ##
+
+There are some Microsoft Excel files that should have been provided before the 
+hack day.
+
+These files describe the columns in a series of text files, with one pupil per row, split up by year and Key Stage.  The fields are different across both year and Key Stage, as noted in the different Excel tabs and the 'Year Start' and 'Year End' columns.
+
+The data tables are very wide and mostly contain numerical data.
+
+As far as I can tell, pupil IDs are not shared across years. YMMV.
+
+## Data cleaning ##
+
+The data provided is not in it's normal form, so some work has been done to 
+normalise it.
+
+### Schools ###
+
+A schools model has been extracted from the data (The information is duplicated over every row in the original data).
+
+Rather than the whole school model on each pupil row, an ID to the school model is provided.  This can be accessed with a new HTTP request to the API.
+
+### Pupils ###
+
+This model is the main model in the database.  It's the per-row data in each of the raw data files, grouped by Key Stage.  Because fields are added and removed per year (as per the Year Start and End columns in the Excel file), not all data will be available per row.
+
+Different end points are provided per Key Stage.  Filtering can be done on most fields [TBC]
+
+
+
+
+
+
