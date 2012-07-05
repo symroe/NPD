@@ -33,5 +33,11 @@ class SchoolResource(ModelResource):
         authentication = ApiKeyOnlyAuthentication()
         filtering = {
                     "county": ALL,
+                    "postcode": ALL,
+                    "la": ALL,
+                    "URN": ALL,
+                    "establishment": ALL,
+                    "establishment_type": ALL,
+                    "nftype": ALL,
                 }
     
