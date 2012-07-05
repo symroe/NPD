@@ -1,5 +1,5 @@
 from tastypie.resources import ModelResource
-from tastypie.authentication import ApiKeyAuthentication
+from authentication import ApiKeyOnlyAuthentication
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 
 from npddata.models import Dummy, School
@@ -15,7 +15,7 @@ class EntryResource(ModelResource):
         queryset = Dummy.objects.all()
         resource_name = 'dummy'
         excludes = ['private',]
-        authentication = ApiKeyAuthentication()
+        authentication = ApiKeyOnlyAuthentication()
     
     def dehydrate(self, bundle):
            # Include the request IP in the bundle.
@@ -30,7 +30,7 @@ class SchoolResource(ModelResource):
     class Meta:
         queryset = School.objects.all()
         resource_name = 'school'
-        authentication = ApiKeyAuthentication()
+        authentication = ApiKeyOnlyAuthentication()
         filtering = {
                     "county": ALL,
                 }
