@@ -8,7 +8,6 @@ class APIKeyInline(admin.TabularInline):
     model = ApiKey
     max_num = 0
     extra = 0
-    readonly_fields = [f.name for f in ApiKey._meta.fields]
 
 # Define a new User admin
 class UserAdmin(UserAdmin):
