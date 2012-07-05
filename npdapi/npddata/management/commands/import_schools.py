@@ -43,8 +43,8 @@ class Command(BaseCommand):
                         s.town = line.get('SCH_TOWN', '').strip()
                         s.county = line.get('SCH_COUNTY', '').strip()
                         s.postcode = line.get('SCH_POSTCODE', '').strip()
-                        s.la = self.get_with_prefix('LA', line).strip("\" ")
-                        s.URN = self.get_with_prefix('URN', line).strip("\" ")
+                        s.la = self.get_with_prefix('LA', line).strip("\" ") or 0
+                        s.URN = self.get_with_prefix('URN', line).strip("\" ") or 0
                         s.establishment = int(self.get_with_prefix('ESTAB', line).strip("\" ") or 0)
                         s.establishment_type = int(self.get_with_prefix('TOE_CODE', line).strip("\" ") or 0)
                         s.nftype = line.get('SCH_NFTYPE').strip(' "')
