@@ -1,4 +1,5 @@
 from tastypie.resources import ModelResource
+from tastypie import fields
 from authentication import ApiKeyOnlyAuthentication
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 
@@ -43,6 +44,8 @@ class SchoolResource(ModelResource):
 
 
 class KS2Resource(ModelResource):
+    school = fields.ForeignKey(SchoolResource, 'school')
+
     class Meta:
         queryset = KS2.objects.all()
         resource_name = 'ks2'
