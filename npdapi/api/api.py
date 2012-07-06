@@ -52,6 +52,7 @@ class KS2Resource(ModelResource):
         authentication = ApiKeyOnlyAuthentication()
         filtering = {
                     "gender": ALL,
+                    "year": ALL,
                     "la": ALL,
                     "school_id": ALL,
                     "KS2_CVAAPS" : ALL,
@@ -112,6 +113,7 @@ class KS4Resource(ModelResource):
         authentication = ApiKeyOnlyAuthentication()
         filtering = {
                     "gender": ALL,
+                    "year": ALL,
                     "la": ALL,
                     "school_id": ALL,
                     "KS2_ENGLEV" : ALL,
@@ -402,6 +404,7 @@ class KS5Resource(ModelResource):
         authentication = ApiKeyOnlyAuthentication()
         filtering = {
                     "gender": ALL,
+                    "year": ALL,
                     "la": ALL,
                     "school_id": ALL,
                     "KS2_ENGLEV" : ALL,
