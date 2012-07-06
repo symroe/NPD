@@ -6,12 +6,13 @@ admin.autodiscover()
 
 from tastypie.api import Api
 
-from api.api import EntryResource, SchoolResource
+from api.api import EntryResource, SchoolResource, KS2Resource
 
 
 v1_api = Api(api_name='v1')
 v1_api.register(EntryResource())
 v1_api.register(SchoolResource())
+v1_api.register(KS2Resource())
 
 urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:

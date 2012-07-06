@@ -2,7 +2,7 @@ from tastypie.resources import ModelResource
 from authentication import ApiKeyOnlyAuthentication
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 
-from npddata.models import Dummy, School
+from npddata.models import Dummy, School, KS2
 
 
 class EntryResource(ModelResource):
@@ -40,4 +40,18 @@ class SchoolResource(ModelResource):
                     "establishment_type": ALL,
                     "nftype": ALL,
                 }
+
+
+class KS2Resource(ModelResource):
+    class Meta:
+        queryset = KS2.objects.all()
+        resource_name = 'ks2'
+        authentication = ApiKeyOnlyAuthentication()
+        filtering = {
+                    "gender": ALL,
+                    "la": ALL,
+                    "school_id": ALL,
+                }
     
+    
+
