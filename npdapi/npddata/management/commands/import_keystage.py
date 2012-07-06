@@ -46,7 +46,7 @@ class Command(BaseCommand):
 
     def handle(self, keystage, path, **options):
         for filename in glob.glob("%s/KS%s_*.txt" % (path, keystage)):
-            with open(filename) as f
+            with open(filename) as f:
                 in_file = csv.DictReader(f, dialect='excel-tab')
                 self.prefix = "KS%s" % keystage
                 self.year = file_name = os.path.split(filename)[-1][4:8]

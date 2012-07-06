@@ -67,9 +67,19 @@ For JSON:
 
 Filters can be applied to all the fields listed in the `filtering` section of the schema.
 
+### Aggregation ###
 
+There isn't a way to aggregate the API.  Scraping and processing offline is about the only way.
 
+### Caching ###
 
+There is a cache on the API that will need warming up.  Most queries will speed up significantly after the first call. 
 
+### More reading ###
 
+The API is written in django, using tastie-pie.  The database is postgresql.
+
+For more information on what you can do with the API, the tastie-pie docs are excellent: http://django-tastypie.readthedocs.org/en/latest/
+
+Only GET requests are allowed.
 
