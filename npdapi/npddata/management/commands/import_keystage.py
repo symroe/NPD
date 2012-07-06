@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 import csv
 import glob
@@ -24,14 +25,8 @@ class Command(BaseCommand):
                 v = v.strip(' "')
             if not v:
                 v = None
-            del line[k]
-            line[k[4:]] = v
-        
-        if '2BTECEDEXDA' in line.keys():
-            tmp_v = line['2BTECEDEXDA']
-            del line['2BTECEDEXDA']
-            line['TWOBTECEDEXDA'] = tmp_v
-        
+            line[k] = v
+
         return line
 
     def import_for_ks(self, model, in_file):
