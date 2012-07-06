@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     'npddata',
     'api',
     'django.contrib.gis',
+    'permissions',
     
 )
 

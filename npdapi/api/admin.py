@@ -3,11 +3,18 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
 from tastypie.models import ApiKey
+from permissions.models import PermissionLevel
 
 class APIKeyInline(admin.TabularInline):
     model = ApiKey
     max_num = 0
     extra = 0
+
+class PermissionInline(admin.TabularInline):
+    model = PermissionLevel
+    max_num = 1
+    extra = 0
+    
 
 # Define a new User admin
 class UserAdmin(UserAdmin):
@@ -26,7 +33,7 @@ class UserAdmin(UserAdmin):
         )
     fieldsets = ()
     
-    inlines = [APIKeyInline,]
+    inlines = [APIKeyInline, PermissionInline]
     
     def api_key(self, obj):
         return obj.api_key.key

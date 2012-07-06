@@ -49,14 +49,14 @@ class Command(BaseCommand):
             in_file = csv.DictReader(open(filename), dialect='excel-tab')
             self.prefix = "KS%s" % keystage
             self.year = file_name = os.path.split(filename)[-1][4:8]
-                        
-            if int(keystage) == 2:
+
+            keystage = int(keystage)
+
+            if keystage == 2:
                 model = KS2
-
-            if int(keystage) == 4:
+            if keystage == 4:
                 model = KS4
-
-            if int(keystage) == 5:
+            if keystage == 5:
                 model = KS5
 
             self.import_for_ks(model, in_file)

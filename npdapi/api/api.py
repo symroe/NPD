@@ -1,6 +1,6 @@
 from tastypie.resources import ModelResource
 from tastypie import fields
-from authentication import ApiKeyOnlyAuthentication
+from authentication import ApiKeyOnlyAuthentication, PrivateDataAuthentication
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 
 from npddata.models import Dummy, School, KS2
