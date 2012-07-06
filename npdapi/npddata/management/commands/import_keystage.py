@@ -46,20 +46,21 @@ class Command(BaseCommand):
 
     def handle(self, keystage, path, **options):
         for filename in glob.glob("%s/KS%s_*.txt" % (path, keystage)):
-            in_file = csv.DictReader(open(filename), dialect='excel-tab')
-            self.prefix = "KS%s" % keystage
-            self.year = file_name = os.path.split(filename)[-1][4:8]
+            with open(filename) as f
+                in_file = csv.DictReader(f, dialect='excel-tab')
+                self.prefix = "KS%s" % keystage
+                self.year = file_name = os.path.split(filename)[-1][4:8]
 
-            keystage = int(keystage)
+                keystage = int(keystage)
 
-            if keystage == 2:
-                model = KS2
-            if keystage == 4:
-                model = KS4
-            if keystage == 5:
-                model = KS5
+                if keystage == 2:
+                    model = KS2
+                if keystage == 4:
+                    model = KS4
+                if keystage == 5:
+                    model = KS5
 
-            self.import_for_ks(model, in_file)
+                self.import_for_ks(model, in_file)
 
 
 
