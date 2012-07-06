@@ -30,7 +30,6 @@ class Command(BaseCommand):
                 )
                 
                 for k,v in line.items():
-                    print k,v
                     if v:
                         v = v.strip(' "')
                     del line[k]
