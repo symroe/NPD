@@ -3,7 +3,7 @@ from tastypie import fields
 from authentication import ApiKeyOnlyAuthentication, PrivateDataAuthentication
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 
-from npddata.models import Dummy, School, KS2
+from npddata.models import Dummy, School, KS2, KS4, KS5
 
 
 class EntryResource(ModelResource):
