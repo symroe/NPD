@@ -27,6 +27,7 @@ class Command(BaseCommand):
                     school_id = line.get('SCH_SCHOOLID'),
                     la = self.get_with_prefix('LA', line).strip(' "'),
                     gender = self.get_with_prefix('GENDER', line).strip(' "'),
+                    year = self.year,
                 )
                 
                 for k,v in line.items():
@@ -45,6 +46,7 @@ class Command(BaseCommand):
         for filename in glob.glob("%s/KS%s_*.txt" % (path, keystage)):
             in_file = csv.DictReader(open(filename), dialect='excel-tab')
             self.prefix = "KS%s" % keystage
+            self.year = file_name = os.path.split(filename)[-1][4:8]
             if int(keystage) == 2:
                 self.import_ks2(in_file)
 

@@ -31,6 +31,7 @@ class PupilData(models.Model):
         help_text="""Local Authority (LA) that the school where the pupil 
         attends reports to (original data).""")
     gender = models.CharField(blank=True, max_length=1, help_text="KS[n]_GENDER")
+    year = models.IntegerField(blank=True, null=True, db_index=True)
     
 
 class KS2(PupilData):
