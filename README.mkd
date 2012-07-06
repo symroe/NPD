@@ -11,7 +11,7 @@ These files describe the columns in a series of text files, with one pupil per r
 
 The data tables are very wide and mostly contain numerical data.
 
-As far as I can tell, pupil IDs are not shared across years. YMMV.
+There is no shared ID across the different key stages, so comparing the data over time using the end points isn't possible.  To work around this interesting situation, the data files contain the previous key stage data on the rows, so the KS2 data only has KS2, KS4 has KS2 and KS4 and KS5 has all 3.  This is a curious state of affairs that results in over 400 columns in the KS5 data.
 
 ## Data cleaning ##
 
@@ -24,11 +24,49 @@ A schools model has been extracted from the data (The information is duplicated 
 
 Rather than the whole school model on each pupil row, an ID to the school model is provided.  This can be accessed with a new HTTP request to the API.
 
-### Pupils ###
+### Key Stage [N] ###
 
 This model is the main model in the database.  It's the per-row data in each of the raw data files, grouped by Key Stage.  Because fields are added and removed per year (as per the Year Start and End columns in the Excel file), not all data will be available per row.
 
-Different end points are provided per Key Stage.  Filtering can be done on most fields [TBC]
+Different end points are provided per Key Stage.  Filtering can be done on most fields.
+
+
+## End points ##
+
+These are the end points:
+
+* /api/v1/ks2
+* /api/v1/ks4
+* /api/v1/ks5
+* /api/v1/school
+
+There is a schema that can be found by adding `schema` to the end of the URL:
+
+* /api/v1/ks2/schema/
+* /api/v1/ks4/schema/
+* /api/v1/ks5/schema/
+* /api/v1/school/schema/
+
+If using a browser, send format=FORMAT as a get variable.
+
+### Supported Formats ###
+
+* JSON
+* XML
+* YAML
+
+The format is determined by the Accept header, or the `format` get variable.
+
+For example, for XML use:
+> curl -H "Accept: application/xml" [URL]
+
+For JSON:
+> curl -H "Accept: application/json" [URL]
+
+### Filtering ###
+
+Filters can be applied to all the fields listed in the `filtering` section of the schema.
+
 
 
 
